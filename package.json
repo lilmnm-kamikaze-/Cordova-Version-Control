@@ -1,0 +1,48 @@
+{
+  "name": "cdvversioncrtl",
+  "version": "1.0.0",
+  "description": "Control the versions in your config.xml of your cordova projects",
+  "main": "src/main.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo test",
+    "addAll": "git add -A",
+    "prepare": "husky install",
+    "commit": "cz",
+    "release": "standard-version",
+    "lint": "eslint .",
+    "fix": "eslint . --fix"
+  },
+  "bin": {
+    "cdvversioncrtl": "./bin/main.js",
+    "verctrl": "./bin/main.js"
+  },
+  "keywords": [
+    "Cordova",
+    "version-control",
+    "cli"
+  ],
+  "author": "Joe 'kami' k.",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.1",
+    "standard-version": "^9.3.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "meow": "^10.1.1",
+    "util-promisify": "^2.1.0",
+    "xml2js": "^0.4.23"
+  }
+}
