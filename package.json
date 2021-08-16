@@ -1,8 +1,8 @@
 {
-  "name": "cdvversioncrtl",
+  "name": "@kamikage/cordova-version-control",
   "version": "1.0.0",
   "description": "Control the versions in your config.xml of your cordova projects",
-  "main": "src/main.js",
+  "main": "src/cli.js",
   "publishConfig": {
     "access": "public"
   },
@@ -10,14 +10,15 @@
     "test": "echo test",
     "addAll": "git add -A",
     "prepare": "husky install",
-    "commit": "cz",
+    "commit": "cz -S",
     "release": "standard-version",
     "lint": "eslint .",
     "fix": "eslint . --fix"
   },
   "bin": {
-    "cdvversioncrtl": "./bin/main.js",
-    "verctrl": "./bin/main.js"
+    "@kamikage/cdvversioncrtl": "bin/main.js",
+    "cdvversioncrtl": "bin/main.js",
+    "verctrl": "bin/main.js"
   },
   "keywords": [
     "Cordova",
@@ -26,6 +27,10 @@
   ],
   "author": "Joe 'kami' k.",
   "license": "ISC",
+  "files": [
+    "src",
+    "README.md"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
@@ -41,8 +46,19 @@
     }
   },
   "dependencies": {
+    "chalk": "^4.1.2",
+    "esm": "^3.2.25",
     "meow": "^10.1.1",
+    "ncp": "^2.0.0",
     "util-promisify": "^2.1.0",
     "xml2js": "^0.4.23"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilmnm-kamikaze-/Cordova-Version-Control.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/issues"
+  },
+  "homepage": "https://github.com/lilmnm-kamikaze-/Cordova-Version-Control#readme"
 }
