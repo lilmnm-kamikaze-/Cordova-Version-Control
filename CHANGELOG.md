@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.0.0...v1.0.1) (2021-08-17)
+
+
+### Bug Fixes
+
+* **CHANGELOG.md:** that was some error ([428e243](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/428e243ac25f4316daa5b8b2c2a6fccbafd0aba1))
+* **main.js:** fixed the build number not being the correct number getting written to config.xml ([08a465b](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/08a465bcb94f22bda329c710457252a474a89c98))
+
 ## 1.0.0 (2021-08-16)
 
 
