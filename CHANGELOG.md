@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.0.1...v1.0.2) (2021-08-17)
+
+
+### Bug Fixes
+
+* fix issue with config.xml and newlines being written as &#xD; ([daa82d7](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/daa82d7c41a4800b206fec112db1bddb6f141656))
+
 ### [1.0.1](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.0.0...v1.0.1) (2021-08-17)
 
 
