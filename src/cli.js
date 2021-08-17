@@ -1,12 +1,8 @@
 #!/usr/bin/env node
 
-/**
- * Versions will follow the Semantic Versioning system (https://semver.org/)
- * Build versions will use the semver system as a 6 digit version e.g. 1.55.3 => 15503 (starting 0 is ignored)
- */
-
 import meow from 'meow';
-import cdvVerCrtl from '.';
+
+import cdvVerCrtl from './main';
 
 const help = `
     For ease of use, I recommend using standard-version to handle bump files and changelog creation.
@@ -39,11 +35,11 @@ const options = {
             alias: 'b',
         },
         androidOnly: {
-            type: 'bool',
+            type: 'boolean',
             alias: 'a',
         },
         iosOnly: {
-            type: 'bool',
+            type: 'boolean',
             alias: 'i',
         },
     },
@@ -60,4 +56,4 @@ const android = cli.flags.androidOnly || false;
 const ios = +cli.flags.iosOnly || false;
 
 
-cdvVerCrtl({ configPath, version, buildNumber,, android, ios });
+cdvVerCrtl({ configPath, version, buildNumber, android, ios });

@@ -1,3 +1,7 @@
-node_modules/
+node_modules
 *.sublime-project
 *.sublime-workspace
+dist/
+npm-debug*.log
+test/config.xml
+config.xml

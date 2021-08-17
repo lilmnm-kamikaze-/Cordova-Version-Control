@@ -1,2 +1,4 @@
 *.sublime-project
 *.sublime-workspace
+test/config.xml
+commitlint.config.js
