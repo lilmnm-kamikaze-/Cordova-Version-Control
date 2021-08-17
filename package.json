@@ -30,7 +30,7 @@
     "clean": "rm -rf dist",
     "addAll": "git add -A",
     "prepare": "husky install",
-    "commit": "cz -S",
+    "commit": "npm run addAll && cz -S",
     "release": "npm run build && standard-version -s",
     "lint": "eslint .",
     "fix": "eslint . --fix"

@@ -58,9 +58,9 @@ function setAttributes(xml, version, buildNumber, android, ios) {
     }
     if(!buildNumber){
         const [major, minor, patch] = version.split('.');
-        console.log('%s The major number is %s, the minor number is %d, the patch is %d', chalk.green.bold('INFO!'), major, minor, patch);
+        console.log('%s The version being saved to config.xml is %d.%d.%d.', chalk.green.bold('INFO!'), major, minor, patch);
         buildNumber = evaluate('(' + major + ' * 10000) + (' + minor + ' * 100) + (' + patch + ')');
-        console.log('%s The The build numbe writen to config.xml is %d', chalk.green.bold('INFO!'), buildNumber);
+        console.log('%s The The build numbe writen to config.xml is %d.', chalk.green.bold('INFO!'), buildNumber);
     }
 
     if (el === 'widget' && buildNumber) {
