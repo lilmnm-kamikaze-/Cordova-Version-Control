@@ -15,7 +15,7 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const log = console.log;
 
-const xmlBuilder = new Builder();
+const xmlBuilder = new Builder({'newline': '\r\n'});
 
 function checkTypeErrors(configPath, version, buildNumber) {
     if (typeof configPath !== 'string') {
