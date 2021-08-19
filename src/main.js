@@ -49,8 +49,8 @@ async function getVersionFromPackage() {
     return version;
 }
 
-function setAttributes(xml, version, buildNumber, android, ios) {
-    const newXml = xml;
+function setAttributes(xml, version, buildNumber, android, ios, extra) {
+    let newXml = xml;
     const el = newXml.plugin ? 'plugin' : 'widget';
 
     if (version) {
@@ -62,7 +62,15 @@ function setAttributes(xml, version, buildNumber, android, ios) {
         buildNumber = evaluate('(' + major + ' * 10000) + (' + minor + ' * 100) + (' + patch + ')');
         console.log('%s The The build numbe writen to config.xml is %d.', chalk.green.bold('INFO!'), buildNumber);
     }
-
+    if(extra){
+        console.log('%s The extra tag is enabled changing {{cdvverctrl}} to %s in config.xml', chalk.green.bold('INFO!'), version);
+        // {{cdvverctrl}} this is what we will look for to replace
+        try{
+            newXml = JSON.parse(JSON.stringify(newXml).replace('{{cdvverctrl}}', version));
+        } catch {
+            console.log('%s You need to add {{cdvverctrl}} in config.xml to use the extra option!', chalk.red.bold('ERROR!'), version);
+        }
+    }
     if (el === 'widget' && buildNumber) {
         if (android) {
             newXml.widget.$['android-versionCode'] = buildNumber;
@@ -77,7 +85,7 @@ function setAttributes(xml, version, buildNumber, android, ios) {
     return newXml;
 }
 
-async function cdvVerCrtl({ configPath, version, buildNumber, android, ios } = {}) {
+async function cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra } = {}) {
     const cPath = configPath || './config.xml';
     if (android && ios) {
       console.error('%s Please only use one -a or -i options at a time. Don\'t use either to update both android and ios build numbers.', chalk.red.bold('ERROR!'));
@@ -90,7 +98,7 @@ async function cdvVerCrtl({ configPath, version, buildNumber, android, ios } = {
 
     const v = !version && !buildNumber ? await getVersionFromPackage(version) : version;
 
-    const newConfig = setAttributes(currentConfig, v, buildNumber, android, ios);
+    const newConfig = setAttributes(currentConfig, v, buildNumber, android, ios, extra);
 
     const newData = xmlBuilder.buildObject(newConfig);
     return writeFile(cPath, newData, { encoding: 'UTF-8' });

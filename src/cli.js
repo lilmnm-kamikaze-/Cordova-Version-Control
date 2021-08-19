@@ -9,13 +9,14 @@ const help = `
     This CLI app should be used after running the standard-version bump but can also be used with out it.
 
     Usage
-      $ cdvversioncrtl [-v|--version <version>] [-b|--build-number <build-number>] [-a|--android-only] [-i|--ios-only] [config.xml]
+      $ cdvversioncrtl [-v|--version <version>] [-b|--build-number <build-number>] [-a|--android-only] [-i|--ios-only] [-e|--extra] [config.xml]
     
     Options
       -v, --version Version to set
       -b, --build-number Build number to set
       -a, --android-only update only android build number
       -i, --ios-only update only ios build number
+      -e, --extra add the version to other places in the config.xml
       
     Examples
       $ cdvversioncrtl -v 2.4.9
@@ -42,6 +43,10 @@ const options = {
             type: 'boolean',
             alias: 'i',
         },
+        extra: {
+            type: 'boolean',
+            alias: 'e',
+        },
     },
     help,
     autoVersion: false,
@@ -54,6 +59,7 @@ const version = cli.flags.version || null;
 const buildNumber = +cli.flags.buildNumber || null;
 const android = cli.flags.androidOnly || false;
 const ios = +cli.flags.iosOnly || false;
+const extra = +cli.flags.extra || false;
 
 
-cdvVerCrtl({ configPath, version, buildNumber, android, ios });
+cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra });
