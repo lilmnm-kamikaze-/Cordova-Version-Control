@@ -1,6 +1,6 @@
 {
   "name": "cordova-version-control",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Control the versions in your config.xml of your cordova projects",
   "main": "dist/main.js",
   "publishConfig": {
