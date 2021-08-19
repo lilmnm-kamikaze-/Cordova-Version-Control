@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.0.2...v1.1.0) (2021-08-19)
+
+
+### Features
+
+* **extra-option:** adds Extra tag to write version in more places in the config.xml ([050371d](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/050371d767313211729fc813c318f1ac8fedebc6))
+
 ### [1.0.2](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.0.1...v1.0.2) (2021-08-17)
 
 
