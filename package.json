@@ -32,7 +32,7 @@
     "prepare": "husky install",
     "commit": "npm run addAll && cz -S",
     "release": "npm run build && standard-version -s",
-    "publish": "git push --follow-tags origin master && npm publish",
+    "sendOut": "git push --follow-tags origin master && npm publish",
     "lint": "eslint .",
     "fix": "eslint . --fix"
   },
