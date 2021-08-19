@@ -10,7 +10,7 @@ you can set your own version and build numbers using the -v for version and -b f
 -   Can read `version` from local `package.json`
 -   Only update android or ios build number if you wish (from an app review rejection)
 -   Can work on Cordova Plugin projects
--   Replaces {{cdvverctrl}} with `version` in config.xml when the `-e` option is enabled. See [Extra option below](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control#extra-option--e--extra). 
+-   Replaces {{cdvverctrl}} with `version` in config.xml when the `-e` option is enabled. See [Extra option below](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control#extra-option). 
 -   Has CLI
 
 ## Install
