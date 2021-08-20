@@ -38,6 +38,7 @@
   },
   "bin": {
     "cdvversioncrtl": "dist/cli.js",
+    "cdvverctrl": "dist/cli.js",
     "verctrl": "dist/cli.js"
   },
   "keywords": [

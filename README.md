@@ -30,14 +30,14 @@ const cdvVerCrtl = require('cordova-version-control');
 cdvVerCrtl(); // reads version from package.json
 cdvVerCrtl('4.20.69');
 cdvVerCrtl('./plugin.xml', '4.20.69');
-cdvVerCrtl('./path/to/config.alt.xml', 69);
+cdvVerCrtl('./path/to/plugin.alt.xml', 69);
 cdvVerCrtl('./path/to/config.alt.xml', '4.20.69', 69)
     .catch(error => { ... });
 ```
 
 ## API
 
-`cdvVerCrtl([configPath], [version], [buildNumber], [android], [ios], [extra]): Promise`
+`cdvVerCrtl([configPath], [version], [buildNumber], [android], [ios], [extra], [template], [plugin]): Promise`
 
 -   `configPath` _(string)_ - path to your `config.xml` or `plugin.xml`
 -   `version` _(string)_ - version to be written
@@ -45,7 +45,8 @@ cdvVerCrtl('./path/to/config.alt.xml', '4.20.69', 69)
 -   `android` _(bool)_ - sets if you only want to write android build number, ignored for plugins
 -   `ios` _(bool)_ - sets if you only want to write android build number, ignored for plugins
 -   `extra` _(bool)_ - enables the extra version locations in config.xml
--   `template` _(string)_ - path to a template config.xml file.
+-   `template` _(string)_ - path to a template config.xml file or plugin.xml file.
+-   `plugin` _(bool)_ - designate that this is a cordova plugin project and saves to a plugin.xml file
 
 Important notes:
 You can not have `android` and `ios` both as true. Only use one at a time or set both to false to write both android and ios build numbers.
@@ -53,7 +54,7 @@ You can not have `android` and `ios` both as true. Only use one at a time or set
 
 ## CLI
 
-`cdvversioncrtl [-v|--version <version>] [-b|--build-number <build-number>] [-a|--android-only] [-i|--ios-only] [-e|--extra] [-t|--template] [config.xml]`
+`cdvversioncrtl [-v|--version <version>] [-b|--build-number <build-number>] [-a|--android-only] [-i|--ios-only] [-e|--extra] [-t|--template] [-p|--plugin] [config.xml]`
 
 Options:
 
@@ -63,6 +64,7 @@ Options:
 -   `-i`/`--iosOnly` - only set ios build number, ignored for plugins
 -   `-e`/`--extra` - enables the extra version locations in config.xml
 -   `-t`/`--template` - path to the template config.xml file
+-   `-p`/`--plugin` - designate that this is a cordova plugin project and saves to a plugin.xml file
 -   `--help` - display help
 
 Important notes:
@@ -107,7 +109,7 @@ It then calls verctrl to have it take that version and add it to the config.xml 
 ## Examples
 
 ```
-$ cdvversioncrtl -v 2.4.9 plugin.xml
+$ cdvversioncrtl -v 2.4.9 -p plugin.xml
 $ cdvversioncrtl -b 86
 $ cdvverctrl -v 2.4.9 -b 86
 $ cdvverctrl (gets version from project package.json)

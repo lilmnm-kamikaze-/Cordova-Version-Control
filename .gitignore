@@ -5,3 +5,4 @@ dist/
 npm-debug*.log
 test/config.xml
 config.xml
+config.xml.cfg

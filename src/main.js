@@ -18,28 +18,29 @@ const log = console.log;
 const xmlBuilder = new Builder({'newline': '\r\n'});
 
 function checkTypeErrors(configPath, version, buildNumber) {
-    if (typeof configPath !== 'string') {
+    if(typeof configPath !== 'string') {
         throw TypeError('"configPath" argument must be a string');
     }
 
-    if (version && typeof version !== 'string') {
+    if(version && typeof version !== 'string') {
         throw TypeError('"version" argument must be a string');
     }
 
-    if (buildNumber && typeof buildNumber !== 'number') {
+    if(buildNumber && typeof buildNumber !== 'number') {
         throw TypeError('"buildNumber" argument must be an integer');
     }
 
-    if (buildNumber && buildNumber !== parseInt(buildNumber, 10)) {
+    if(buildNumber && buildNumber !== parseInt(buildNumber, 10)) {
         throw TypeError('"buildNumber" argument must be an integer');
     }
 }
 
 async function getXml(configPath, templatePath) {
+    let configFile = '';
     if(templatePath){
-        const configFile = await readFile(templatePath, 'UTF-8');
+        configFile = await readFile(templatePath, 'UTF-8');
     } else {
-        const configFile = await readFile(configPath, 'UTF-8');
+        configFile = await readFile(configPath, 'UTF-8');
     }
 
     return xml2js(configFile);
@@ -57,28 +58,28 @@ function setAttributes(xml, version, buildNumber, android, ios, extra) {
     let newXml = xml;
     const el = newXml.plugin ? 'plugin' : 'widget';
 
-    if (version) {
+    if(version) {
         newXml[el].$.version = version;
     }
-    if(!buildNumber){
+    if(!buildNumber && el === 'widget') {
         const [major, minor, patch] = version.split('.');
-        console.log('%s The version being saved to config.xml is %d.%d.%d.', chalk.green.bold('INFO!'), major, minor, patch);
+        log('%s The version being saved to config file is %d.%d.%d.', chalk.green.bold('INFO!'), major, minor, patch);
         buildNumber = evaluate('(' + major + ' * 10000) + (' + minor + ' * 100) + (' + patch + ')');
-        console.log('%s The The build numbe writen to config.xml is %d.', chalk.green.bold('INFO!'), buildNumber);
+        log('%s The The build numbe writen to config file is %d.', chalk.green.bold('INFO!'), buildNumber);
     }
-    if(extra){
-        console.log('%s The extra tag is enabled changing {{cdvverctrl}} to %s in config.xml', chalk.green.bold('INFO!'), version);
+    if(extra) {
+        log('%s The extra tag is enabled changing {{cdvverctrl}} to %s in config file', chalk.green.bold('INFO!'), version);
         // {{cdvverctrl}} this is what we will look for to replace
-        try{
+        try {
             newXml = JSON.parse(JSON.stringify(newXml).replace('{{cdvverctrl}}', version));
         } catch {
-            console.log('%s You need to add {{cdvverctrl}} in config.xml to use the extra option!', chalk.red.bold('ERROR!'), version);
+            log('%s You need to add {{cdvverctrl}} in config file to use the extra option!', chalk.red.bold('ERROR!'), version);
         }
     }
-    if (el === 'widget' && buildNumber) {
+    if(el === 'widget' && buildNumber) {
         if (android) {
             newXml.widget.$['android-versionCode'] = buildNumber;
-        } else if (ios){
+        } else if (ios) {
             newXml.widget.$['ios-CFBundleVersion'] = buildNumber;
         } else {
             newXml.widget.$['android-versionCode'] = buildNumber;
@@ -89,24 +90,38 @@ function setAttributes(xml, version, buildNumber, android, ios, extra) {
     return newXml;
 }
 
-async function cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra, templatePath } = {}) {
-    const cPath = configPath || './config.xml';
+async function cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra, template, plugin } = {}) {
+    let cPath = '';
+    if(!plugin) {
+         cPath = configPath || './config.xml';
+    } else {
+        
+        if (buildNumber) {
+            log('%s Build numbers will be ignored on cordova plugin projects.', chalk.orange.bold('WARNING!'));
+        }
+        cPath = configPath || './plugin.xml';
+        if (cPath.includes('config.xml')) {
+            console.error('%s Please use a path for the plugin.xml not config.xml. Or don\'t specify the configPath.', chalk.red.bold('ERROR!'));
+            process.exit(1);
+        }
+    }
 
-    if (android && ios) {
+    if(android && ios) {
       console.error('%s Please only use one -a or -i options at a time. Don\'t use either to update both android and ios build numbers.', chalk.red.bold('ERROR!'));
       process.exit(1);
     }
+    log('%s The template is %s.', chalk.green.bold('INFO!'), template);
 
     checkTypeErrors(cPath, version, buildNumber);
 
-    const currentConfig = await getXml(cPath, templatePath);
+    const currentConfig = await getXml(cPath, template);
 
     const v = !version && !buildNumber ? await getVersionFromPackage(version) : version;
 
     const newConfig = setAttributes(currentConfig, v, buildNumber, android, ios, extra);
 
     const newData = xmlBuilder.buildObject(newConfig);
-    return writeFile(cPath, newData, { encoding: 'UTF-8' });
+    return writeFile(cPath, newData, { encoding: 'UTF-8', flag: 'w' });
 }
 
 export default cdvVerCrtl;
