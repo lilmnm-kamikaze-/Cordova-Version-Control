@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.1.2...v1.2.0) (2021-08-20)
+
+
+### Features
+
+* **template:** add path to template config file to read from ([66cb6b8](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/66cb6b8db65894ecf82dc386b3f13b6f05db0a52))
+
+
+### Bug Fixes
+
+* **template:** fix template parsing. also fixed the plugin side of the code ([eb6fa24](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/eb6fa24553d1f6b9782f949373c17b7f90069eed))
+
 ### [1.1.2](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.1.1...v1.1.2) (2021-08-19)
 
 ### [1.1.1](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.1.0...v1.1.1) (2021-08-19)
