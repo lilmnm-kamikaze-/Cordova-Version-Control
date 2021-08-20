@@ -35,8 +35,12 @@ function checkTypeErrors(configPath, version, buildNumber) {
     }
 }
 
-async function getXml(configPath) {
-    const configFile = await readFile(configPath, 'UTF-8');
+async function getXml(configPath, templatePath) {
+    if(templatePath){
+        const configFile = await readFile(templatePath, 'UTF-8');
+    } else {
+        const configFile = await readFile(configPath, 'UTF-8');
+    }
 
     return xml2js(configFile);
 }
@@ -85,8 +89,9 @@ function setAttributes(xml, version, buildNumber, android, ios, extra) {
     return newXml;
 }
 
-async function cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra } = {}) {
+async function cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra, templatePath } = {}) {
     const cPath = configPath || './config.xml';
+
     if (android && ios) {
       console.error('%s Please only use one -a or -i options at a time. Don\'t use either to update both android and ios build numbers.', chalk.red.bold('ERROR!'));
       process.exit(1);
@@ -94,7 +99,7 @@ async function cdvVerCrtl({ configPath, version, buildNumber, android, ios, extr
 
     checkTypeErrors(cPath, version, buildNumber);
 
-    const currentConfig = await getXml(cPath);
+    const currentConfig = await getXml(cPath, templatePath);
 
     const v = !version && !buildNumber ? await getVersionFromPackage(version) : version;
 

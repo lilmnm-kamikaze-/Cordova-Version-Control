@@ -13,6 +13,7 @@ you can set your own version and build numbers using the -v for version and -b f
 -   Only update android or ios build number if you wish (from an app review rejection)
 -   Can work on Cordova Plugin projects
 -   Replaces {{cdvverctrl}} with `version` in config.xml when the `-e` option is enabled. See [Extra option below](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control#extra-option). 
+-   Use a template to ready from and save in the base of the project directory to make the use of the `-e` option more automated.
 -   Has CLI
 
 ## Install
@@ -44,6 +45,7 @@ cdvVerCrtl('./path/to/config.alt.xml', '4.20.69', 69)
 -   `android` _(bool)_ - sets if you only want to write android build number, ignored for plugins
 -   `ios` _(bool)_ - sets if you only want to write android build number, ignored for plugins
 -   `extra` _(bool)_ - enables the extra version locations in config.xml
+-   `template` _(string)_ - path to a template config.xml file.
 
 Important notes:
 You can not have `android` and `ios` both as true. Only use one at a time or set both to false to write both android and ios build numbers.
@@ -51,7 +53,7 @@ You can not have `android` and `ios` both as true. Only use one at a time or set
 
 ## CLI
 
-`cdvversioncrtl [-v|--version <version>] [-b|--build-number <build-number>] [-a|--android-only] [-i|--ios-only] [-e|--extra] [config.xml]`
+`cdvversioncrtl [-v|--version <version>] [-b|--build-number <build-number>] [-a|--android-only] [-i|--ios-only] [-e|--extra] [-t|--template] [config.xml]`
 
 Options:
 
@@ -60,6 +62,7 @@ Options:
 -   `-a`/`--androidOnly` - only set android build number, ignored for plugins
 -   `-i`/`--iosOnly` - only set ios build number, ignored for plugins
 -   `-e`/`--extra` - enables the extra version locations in config.xml
+-   `-t`/`--template` - path to the template config.xml file
 -   `--help` - display help
 
 Important notes:
@@ -108,4 +111,5 @@ $ cdvversioncrtl -v 2.4.9 plugin.xml
 $ cdvversioncrtl -b 86
 $ cdvverctrl -v 2.4.9 -b 86
 $ cdvverctrl (gets version from project package.json)
+$ verctrl -t config.xml.src -e
 ```

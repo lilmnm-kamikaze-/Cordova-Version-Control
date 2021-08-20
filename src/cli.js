@@ -47,6 +47,10 @@ const options = {
             type: 'boolean',
             alias: 'e',
         },
+        template: {
+            type: 'string',
+            alias: 't',
+        },
     },
     help,
     autoVersion: false,
@@ -60,6 +64,7 @@ const buildNumber = +cli.flags.buildNumber || null;
 const android = cli.flags.androidOnly || false;
 const ios = +cli.flags.iosOnly || false;
 const extra = +cli.flags.extra || false;
+const templatePath = +cli.flags.template || null;
 
 
-cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra });
+cdvVerCrtl({ configPath, version, buildNumber, android, ios, extra, templatePath });
