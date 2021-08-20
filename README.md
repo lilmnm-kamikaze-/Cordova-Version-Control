@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/cordova-version-control.png?downloads=true&stars=true)](https://nodei.co/npm/cordova-version-control/)
+
 This will write the version and build number to your Cordova projects config.xml file
 Version numbers will follow the Semantic Versioning system (https://semver.org/) 
 which would already be used in the project.json file
