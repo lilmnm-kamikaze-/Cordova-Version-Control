@@ -1,6 +1,6 @@
 {
   "name": "cordova-version-control",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Control the versions in your config.xml of your cordova projects",
   "main": "dist/main.js",
   "publishConfig": {
@@ -53,22 +53,22 @@
     "README.md"
   ],
   "devDependencies": {
-    "@babel/cli": "7.14.8",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "7.15.0",
     "@babel/plugin-transform-runtime": "7.15.0",
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.15.0",
     "@babel/register": "7.15.3",
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "babel-jest": "27.0.6",
     "babel-plugin-add-module-exports": "1.0.4",
     "child-process-promise": "2.2.1",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
-    "husky": "^7.0.2",
-    "standard-version": "^9.3.1"
+    "husky": "^7.0.4",
+    "standard-version": "^9.3.2"
   },
   "config": {
     "commitizen": {
@@ -78,7 +78,7 @@
   "dependencies": {
     "@babel/runtime": "7.7.2",
     "chalk": "^4.1.2",
-    "mathjs": "^9.4.4",
+    "mathjs": "^9.5.1",
     "meow": "^10.1.1",
     "ncp": "^2.0.0",
     "util-promisify": "^2.1.0",
