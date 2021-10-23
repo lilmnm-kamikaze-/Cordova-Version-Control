@@ -1,6 +1,6 @@
 {
   "name": "cordova-version-control",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Control the versions in your config.xml of your cordova projects",
   "main": "dist/main.js",
   "publishConfig": {
@@ -79,7 +79,7 @@
     "@babel/runtime": "7.7.2",
     "chalk": "^4.1.2",
     "mathjs": "^9.5.1",
-    "meow": "^10.1.1",
+    "meow": "^9.0.0",
     "ncp": "^2.0.0",
     "util-promisify": "^2.1.0",
     "xml2js": "^0.4.23",
