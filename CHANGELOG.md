@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.4](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.2.3...v1.2.4) (2023-10-13)
+
+
+### Bug Fixes
+
+* $#xD; string in config.xml file after save ([32f8508](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/32f8508f312f200049552b05af44d8e85bc22645))
+* fix the issue of the extra tag not changing all instances of the {{cdvverctrl}} placeholder ([247e71d](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/commit/247e71d6c8d45a139543d1683b6cf20174c4cbf0))
+
 ### [1.2.3](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.2.2...v1.2.3) (2021-10-23)
 
 ### [1.2.2](https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/compare/v1.2.1...v1.2.2) (2021-10-21)
