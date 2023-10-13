@@ -74,10 +74,12 @@ function setAttributes(xml, version, buildNumber, android, ios, extra) {
         log('%s The extra tag is enabled changing {{cdvverctrl}} to %s in config file', chalk.green.bold('INFO!'), version);
         // {{cdvverctrl}} this is what we will look for to replace
         try {
-            newXml = JSON.parse(JSON.stringify(newXml).replace('{{cdvverctrl}}', version));
+            newXml = JSON.stringify(newXml).replace(/{{cdvverctrl}}/g, version);
+            log('%s the newXML is %s', chalk.green.bold('INFO!'), newXml);
         } catch (error) {
             log('%s You need to add {{cdvverctrl}} in config file to use the extra option!', chalk.red.bold('ERROR!'), version);
         }
+        newXml = JSON.parse(newXml);
     }
     if (el === 'widget' && buildNumber) {
         if (android) {

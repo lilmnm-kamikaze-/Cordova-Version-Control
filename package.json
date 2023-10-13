@@ -1,96 +1,96 @@
 {
-  "name": "cordova-version-control",
-  "version": "1.2.3",
-  "description": "Control the versions in your config.xml of your cordova projects",
-  "main": "dist/main.js",
-  "publishConfig": {
-    "access": "public"
-  },
-  "babel": {
-    "plugins": [
-      "add-module-exports",
-      "@babel/plugin-transform-runtime"
+    "name": "cordova-version-control",
+    "version": "1.2.3",
+    "description": "Control the versions in your config.xml of your cordova projects",
+    "main": "dist/main.js",
+    "publishConfig": {
+        "access": "public"
+    },
+    "babel": {
+        "plugins": [
+            "add-module-exports",
+            "@babel/plugin-transform-runtime"
+        ],
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "targets": {
+                        "node": "14"
+                    }
+                }
+            ]
+        ]
+    },
+    "scripts": {
+        "test": "npm run build && npm link",
+        "test:stop": "npm unlink cordova-version-control && npm run clean",
+        "restart": "npm run test:stop && npm run test",
+        "build": "babel --out-dir dist src",
+        "clean": "rm -rf dist",
+        "addAll": "git add -A",
+        "prepare": "husky install",
+        "commit": "npm run addAll && cz -S",
+        "release": "npm run build && standard-version -s",
+        "sendOut": "git push --follow-tags origin master && npm publish",
+        "lint": "eslint .",
+        "fix": "eslint . --fix"
+    },
+    "bin": {
+        "cdvversioncrtl": "dist/cli.js",
+        "cdvverctrl": "dist/cli.js",
+        "verctrl": "dist/cli.js"
+    },
+    "keywords": [
+        "Cordova",
+        "version-control",
+        "cli"
     ],
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "14"
-          }
+    "author": "Joe 'kami' k.",
+    "license": "ISC",
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "devDependencies": {
+        "@babel/cli": "^7.15.7",
+        "@babel/core": "7.15.0",
+        "@babel/plugin-transform-runtime": "7.15.0",
+        "@babel/polyfill": "7.12.1",
+        "@babel/preset-env": "7.15.0",
+        "@babel/register": "7.15.3",
+        "@commitlint/cli": "^13.2.1",
+        "@commitlint/config-conventional": "^13.2.0",
+        "babel-jest": "27.0.6",
+        "babel-plugin-add-module-exports": "1.0.4",
+        "child-process-promise": "2.2.1",
+        "commitizen": "^4.2.4",
+        "cz-conventional-changelog": "^3.3.0",
+        "eslint": "^7.32.0",
+        "husky": "^7.0.4",
+        "standard-version": "^9.3.2"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
         }
-      ]
-    ]
-  },
-  "scripts": {
-    "test": "npm run build && npm link",
-    "test:stop": "npm unlink && npm run clean",
-    "restart": "npm run test:stop && npm run test",
-    "build": "babel --out-dir dist src",
-    "clean": "rm -rf dist",
-    "addAll": "git add -A",
-    "prepare": "husky install",
-    "commit": "npm run addAll && cz -S",
-    "release": "npm run build && standard-version -s",
-    "sendOut": "git push --follow-tags origin master && npm publish",
-    "lint": "eslint .",
-    "fix": "eslint . --fix"
-  },
-  "bin": {
-    "cdvversioncrtl": "dist/cli.js",
-    "cdvverctrl": "dist/cli.js",
-    "verctrl": "dist/cli.js"
-  },
-  "keywords": [
-    "Cordova",
-    "version-control",
-    "cli"
-  ],
-  "author": "Joe 'kami' k.",
-  "license": "ISC",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "7.15.0",
-    "@babel/plugin-transform-runtime": "7.15.0",
-    "@babel/polyfill": "7.12.1",
-    "@babel/preset-env": "7.15.0",
-    "@babel/register": "7.15.3",
-    "@commitlint/cli": "^13.2.1",
-    "@commitlint/config-conventional": "^13.2.0",
-    "babel-jest": "27.0.6",
-    "babel-plugin-add-module-exports": "1.0.4",
-    "child-process-promise": "2.2.1",
-    "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.32.0",
-    "husky": "^7.0.4",
-    "standard-version": "^9.3.2"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "dependencies": {
-    "@babel/runtime": "7.7.2",
-    "chalk": "^4.1.2",
-    "mathjs": "^9.5.1",
-    "meow": "^9.0.0",
-    "ncp": "^2.0.0",
-    "util-promisify": "^2.1.0",
-    "xml2js": "^0.4.23",
-    "xml2js-es6-promise": "^1.1.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lilmnm-kamikaze-/Cordova-Version-Control.git"
-  },
-  "bugs": {
-    "url": "https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/issues"
-  },
-  "homepage": "https://github.com/lilmnm-kamikaze-/Cordova-Version-Control#readme"
+    },
+    "dependencies": {
+        "@babel/runtime": "7.7.2",
+        "chalk": "^4.1.2",
+        "mathjs": "^9.5.1",
+        "meow": "^9.0.0",
+        "ncp": "^2.0.0",
+        "util-promisify": "^2.1.0",
+        "xml2js": "^0.6.2",
+        "xml2js-es6-promise": "^1.1.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lilmnm-kamikaze-/Cordova-Version-Control.git"
+    },
+    "bugs": {
+        "url": "https://github.com/lilmnm-kamikaze-/Cordova-Version-Control/issues"
+    },
+    "homepage": "https://github.com/lilmnm-kamikaze-/Cordova-Version-Control#readme"
 }
